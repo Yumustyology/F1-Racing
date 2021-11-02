@@ -1,0 +1,145 @@
+<doctype.html>
+
+<head>
+   <link rel="stylesheet" type="text/css" href=CAR.css>
+   <script src="CAR.js"></script>
+    <title>
+        CAR GAME
+    </title>
+</head>
+
+<body>
+
+
+
+   <div id="field">
+     <!-- <div id="player1"> -->
+     <img src="img/car.png" id="player1">
+
+
+     <img src="img/car2.png" id="player2">
+
+
+    </div>
+
+<div class="score_board" id="score"> 
+   <b style="font-size: 20px;">Score:</b> 0 
+</div>
+
+<input type="hidden" name="" value="" id="hidden">
+
+
+</body>
+<script>
+     setInterval(function(){
+         var moveSide = Math.floor(Math.random() * 3);
+         var lefty = moveSide*2*100;
+
+ document.getElementById("player2").style.left = lefty+'px';
+
+     },5000);
+
+//for movemrnt on keyboard event litener
+
+var player  =  document.getElementById('player1');
+
+var obstacle   =  document.getElementById('player2');
+
+var getRight  =  parseInt(window.getComputedStyle(player).getPropertyValue("right"));
+
+
+
+window.addEventListener('keydown' ,button =>{
+
+    if(button.key ==='ArrowLeft'){
+
+        var getLeft  =  parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+
+        getLeft -=200; 
+        if(getLeft >= 0){
+             player.style.left = getLeft + 'px';
+        }
+    
+    } 
+    
+    if(button.key ==='ArrowRight'){
+
+       // if(getLeft == 400){
+
+         var getLeft  =  parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+
+         getLeft+=200; 
+          if(getLeft < 600){
+         player.style.left = getLeft + 'px';
+     }
+
+    //}
+ }
+});
+
+//end of keyboard event litener
+            var num = 0;
+
+          var score_time = setInterval(function(){
+
+           num2 = num++;
+
+            var cokie = document.getElementById('score').innerHTML ="<b style='font-size:20px'>Score:</b>"+ num++;
+
+            document.getElementById('hidden').value = num++;
+
+          },100);
+
+
+setInterval(function(){
+
+    var getLeft  =  parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+
+    var obstacle_left = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+
+    var obstacle_top = parseInt(window.getComputedStyle(obstacle).getPropertyValue("top"));
+
+
+
+     if(obstacle_left == getLeft && obstacle_top < 700 && obstacle_top >= 290 ){
+
+       
+         obstacle.style.animation = "none";
+         obstacle.style.display = "none";
+
+         alert('you lost');
+
+          window.clearInterval(this);
+
+          window.clearInterval(score_time);
+
+          // var nwscore = document.getElementById('hidden').value;
+
+          // var score = document.cookie;
+
+          // if (nwscore > score) 
+          // {
+          //   alert('new record made' +nwscore+ 'former score'+ score);
+
+          //   score = nwscore;
+          // }
+
+          // alert(score);
+
+
+     }
+
+    },1);
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</html>

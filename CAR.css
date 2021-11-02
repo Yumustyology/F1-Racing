@@ -1,0 +1,70 @@
+#field {
+    background-color: skyblue;
+    width: 600px;
+    height: 750px;
+    transform: translateX(50%); 
+    position: relative;
+    overflow: hidden;
+}
+
+#player1 {
+    //background-color: blue;
+    width: 200px;
+    height: 230px;
+    position: absolute;
+    top: 515px;
+    z-index: 2;
+    left: 0;
+    right: 0;
+}
+#player2 {
+    //background-color: red;
+    width: 200px;
+    height: 230px;
+    position: absolute;
+    transform: rotate(180deg);
+    // left: 400px;  
+    
+    animation: run_into 5s infinite;
+}
+
+@keyframes run_into{
+    0%{
+        top: 0;
+    }
+    100%{
+        top:110%;
+    }
+}
+
+/*#cover {
+    background-color: white;
+    width: 600px;
+    transform: translateX(50%);
+    height: 250px;
+    z-index: 2;
+}*/
+
+
+.score_board{
+    font-weight: 30px;
+    position: absolute;
+    top: 5%;
+    font-size: 30px;
+    left: 2%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
